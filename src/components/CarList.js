@@ -1,4 +1,4 @@
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { deleteCar } from "../store";
 import { createSelector } from "@reduxjs/toolkit";
 

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // using 'shallowEqual' to avoid warning (Selectors that return a new reference (such as an object or an array) should be memoized:)
 // https://stackoverflow.com/questions/67384049/how-exactly-useselector-works
 import { changeName, changeCost, addCar } from "../store";
