@@ -15,7 +15,7 @@ function CarList() {
     const dispatch = useDispatch();
 
     // const cars = useSelector((state) => {
-    // const cars = useSelector(({ cars: { data, searchTerm } }) => {
+    // const {cars,name} = useSelector(({ form, cars: { data, searchTerm } }) => {
     //     /*
     //     // return state.cars.cars; weird, 'cars.cars' because we have defined 'cars' property in the 'cars' slice
     //     // So, to avoid the confusion, we'll change the 'cars' property.
@@ -25,20 +25,30 @@ function CarList() {
     //     */
 
     //     // filtering search logic
-    //     return data.filter((car) =>
+    //     const filteredCars= data.filter((car) =>
     //         car.name.toLowerCase().includes(searchTerm.toLowerCase())
     //     );
+    // return {
+    //     cars:filteredCars,
+    //     name:form.name
+    // }
     // }, shallowEqual);
 
     const cars = useSelector(memoizedCars);
+    const name = useSelector((state) => state.form.name);
 
     const handleDelete = (car) => {
         dispatch(deleteCar(car.id));
     };
 
     const renderedCars = cars.map((car) => {
+        // DECIDE IF THIS CAR SHOULD BE BOLD and we still rely on the 'useSelector' again.
+        // state.form.name
+        const bold =
+            name && car.name.toLowerCase().includes(name.toLowerCase());
+
         return (
-            <div key={car.id} className="panel">
+            <div key={car.id} className={`panel ${bold && "bold"}`}>
                 <p>
                     {car.name} - ${car.cost}
                 </p>
