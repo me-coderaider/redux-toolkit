@@ -1,6 +1,9 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteCar } from "../store";
 
 function CarList() {
+    const dispatch = useDispatch();
+
     const cars = useSelector((state) => {
         // return state.cars.cars; weird, 'cars.cars' because we have defined 'cars' property in the 'cars' slice
         // So, to avoid the confusion, we'll change the 'cars' property.
@@ -9,7 +12,9 @@ function CarList() {
         return state.cars.data;
     });
 
-    const handleDelete = (car) => {};
+    const handleDelete = (car) => {
+        dispatch(deleteCar(car.id));
+    };
 
     const renderedCars = cars.map((car) => {
         return (
