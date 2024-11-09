@@ -32,6 +32,13 @@ function CarForm() {
                 cost: cost,
             })
         );
+
+        //  Option 1 for clearing form-data:: (NOT RECOMMENDED)
+        // -> By 'dispatching' multiple functions.
+        // dispatch(changeCost(0));
+        // dispatch(changeName(""));
+
+        // Option 2 :: better way, by using/adding 'extraReducers' in 'formSlice'
     };
 
     return (
